@@ -1,5 +1,6 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
+const fortune = require('./lib/fortune')
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -15,9 +16,8 @@ app.use(express.static(__dirname + '/public'))
 app.get('/', (req, res) => res.render('home'))
 
 app.get('/about', (req, res) => {
-    const randomFortune = fortunes[Math.floor(Math.random()*fortunes.length)]
-    res.render('about', { fortune: randomFortune })
-  })
+  res.render('about', { fortune: fortune.getFortune() } )
+})
 
 // custom 404 page
 app.use((req, res) => {
@@ -31,14 +31,6 @@ app.use((err, req, res, next) => {
     res.status(500)
     res.render('500')
 })
-
-const fortunes = [
-    "Conquer your fears or they will conquer you.",
-    "Rivers need springs.",
-    "Do not fear what you don't know.",
-    "You will have a pleasant surprise.",
-    "Whenever possible, keep it simple.",
-  ]
 
 app.listen(port, () => {
     console.log("Gridiron listening on http://locahost: " + port)
