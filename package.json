@@ -1,11 +1,11 @@
 {
-  "name": "gridiron",
+  "name": "gridiron-blitz",
   "version": "1.0.0",
   "description": "",
-  "main": "gridiron.js",
+  "main": "app.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint gridiron.js lib"
+    "lint": "eslint app.js lib"
   },
   "author": "",
   "license": "ISC",
